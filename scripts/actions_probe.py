@@ -40,6 +40,8 @@ TIMEOUT = 20        # seconds per request
 
 # 3 URLs per store; all confirmed 200 locally.
 # Comfy is excluded per spec.
+# foxtrot/allo retained as known-fail controls (empty content / hard-403 from datacenter IPs).
+# telemart and brain added as locally-passing candidates (confirmed 2026-07-17).
 STORE_URLS: dict[str, list[str]] = {
     "foxtrot": [
         "https://www.foxtrot.com.ua/uk/shop/smartfoniy_i_mobilniye_telefoniy_samsung_sm_s928b_galaxy_s24_ultra_121tb_ztp.html",
@@ -55,6 +57,19 @@ STORE_URLS: dict[str, list[str]] = {
         "https://www.moyo.ua/ua/smartfon_samsung_galaxy_s25_ultra_12_256gb_titanium_whitesilver_sm-s938bzsdeuc_/628561.html",
         "https://www.moyo.ua/ua/smartfon_samsung_galaxy_s25_12_256gb_navy_sm-s931bdbgeuc_/628576.html",
         "https://www.moyo.ua/ua/smartfon_samsung_galaxy_a07_4_128gb_black_sm-a075fzkgsek_/658675.html",
+    ],
+    # --- NEW CANDIDATES (locally PASS 2026-07-17) ---
+    # telemart.ua: prices in JSON-LD offers.price; product pages serve full HTML from datacenter IPs (to be confirmed)
+    "telemart": [
+        "https://telemart.ua/ua/products/apple-iphone-17-pro-512gb-mg8m4afa-cosmic-orange/",
+        "https://telemart.ua/ua/products/apple-iphone-air-256gb-mg2p4afa-sky-blue/",
+        "https://telemart.ua/ua/products/apple-iphone-17-pro-max-512gb-mfyt4afa-cosmic-orange/",
+    ],
+    # brain.com.ua: prices in JSON-LD offers.price (monitor, powerbank) and embedded JSON (Samsung phone)
+    "brain": [
+        "https://brain.com.ua/ukr/Mobilniy_telefon_Samsung_Galaxy_A07_4_128Gb_Black_SM-A075FZKGSEK-p1267688.html",
+        "https://brain.com.ua/ukr/Monitor_Samsung_LS24F320GAIXUA-p1297534.html",
+        "https://brain.com.ua/ukr/Batareya_universalna_Vinga_20000_mAh_45W_Display_Cable_VPBB2045C-p1243025.html",
     ],
 }
 
