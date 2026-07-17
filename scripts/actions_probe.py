@@ -1,13 +1,10 @@
 """
 GitHub Actions IP blocking probe for Ukrainian electronics stores.
-Tests whether Foxtrot, Allo, and MOYO are reachable from datacenter IPs.
+Tests whether MOYO (control, confirmed PASS) and prom.ua are reachable
+from datacenter IPs.
 
 Usage: python scripts/actions_probe.py
 PASS criterion: >=2 of 3 URLs per store return HTTP 200 with a price extracted.
-
-Note on Allo price=0: Allo encodes out-of-stock as offers.price=0 in JSON-LD.
-A price=0 response still counts as PASS for the IP-blocking test (the page
-loaded and parsed; the item is simply OOS, not blocked).
 """
 
 import json
@@ -38,38 +35,22 @@ HEADERS = {
 REQUEST_DELAY = 3   # seconds between requests (mandatory)
 TIMEOUT = 20        # seconds per request
 
-# 3 URLs per store; all confirmed 200 locally.
-# Comfy is excluded per spec.
-# foxtrot/allo retained as known-fail controls (empty content / hard-403 from datacenter IPs).
-# telemart and brain added as locally-passing candidates (confirmed 2026-07-17).
+# 3 URLs per store; all confirmed 200 locally on 2026-07-17.
+# moyo: known-good control (PASS on Actions in prior runs).
+# prom: locally PASS 2026-07-17 — prices via JSON-LD; nginx (no Cloudflare); to be confirmed from datacenter IPs.
+# rozetka: excluded — Cloudflare browser challenge (cf-mitigated: challenge, HTTP 403) even from local residential IPs.
 STORE_URLS: dict[str, list[str]] = {
-    "foxtrot": [
-        "https://www.foxtrot.com.ua/uk/shop/smartfoniy_i_mobilniye_telefoniy_samsung_sm_s928b_galaxy_s24_ultra_121tb_ztp.html",
-        "https://www.foxtrot.com.ua/uk/shop/smartfoniy-i-mobilniye-telefoniy-samsung-sm-s721b-galaxy-s24-fe-8256gb-zkg-graphite.html",
-        "https://www.foxtrot.com.ua/uk/shop/televizoriy-samsung-qe50qn90fauxua.html",
-    ],
-    "allo": [
-        "https://allo.ua/ua/products/mobile/samsung-galaxy-s24-8-256gb-black-sm-s921bzkgeuc.html",
-        "https://allo.ua/ua/products/mobile/smartfon-samsung-galaxy-s24-ultra-12-256gb-titanium-black-sm-s928b-ds.html",
-        "https://allo.ua/ua/products/mobile/samsung-galaxy-s24fe-8-128-graphite-sm-s721bzkdeuc.html",
-    ],
     "moyo": [
         "https://www.moyo.ua/ua/smartfon_samsung_galaxy_s25_ultra_12_256gb_titanium_whitesilver_sm-s938bzsdeuc_/628561.html",
         "https://www.moyo.ua/ua/smartfon_samsung_galaxy_s25_12_256gb_navy_sm-s931bdbgeuc_/628576.html",
         "https://www.moyo.ua/ua/smartfon_samsung_galaxy_a07_4_128gb_black_sm-a075fzkgsek_/658675.html",
     ],
-    # --- NEW CANDIDATES (locally PASS 2026-07-17) ---
-    # telemart.ua: prices in JSON-LD offers.price; product pages serve full HTML from datacenter IPs (to be confirmed)
-    "telemart": [
-        "https://telemart.ua/ua/products/apple-iphone-17-pro-512gb-mg8m4afa-cosmic-orange/",
-        "https://telemart.ua/ua/products/apple-iphone-air-256gb-mg2p4afa-sky-blue/",
-        "https://telemart.ua/ua/products/apple-iphone-17-pro-max-512gb-mfyt4afa-cosmic-orange/",
-    ],
-    # brain.com.ua: prices in JSON-LD offers.price (monitor, powerbank) and embedded JSON (Samsung phone)
-    "brain": [
-        "https://brain.com.ua/ukr/Mobilniy_telefon_Samsung_Galaxy_A07_4_128Gb_Black_SM-A075FZKGSEK-p1267688.html",
-        "https://brain.com.ua/ukr/Monitor_Samsung_LS24F320GAIXUA-p1297534.html",
-        "https://brain.com.ua/ukr/Batareya_universalna_Vinga_20000_mAh_45W_Display_Cable_VPBB2045C-p1243025.html",
+    # prom.ua: marketplace product pages; prices in JSON-LD offers.price (confirmed locally 2026-07-17).
+    # URL format: /ua/m-[merchant-id]-[slug].html (NOT /ua/p[id] which is a dead pattern).
+    "prom": [
+        "https://prom.ua/ua/m-8667243275922823703-smartfon-samsung-galaxy.html",
+        "https://prom.ua/ua/m5162719999084429834-smartfon-samsung-galaxy.html",
+        "https://prom.ua/ua/m6871442186131025987-smartfon-samsung-galaxy.html",
     ],
 }
 
@@ -285,14 +266,10 @@ def main():
             short = r.url if len(r.url) <= 80 else r.url[:77] + "..."
             status_s = str(r.status) if r.status else f"ERR({r.error})"
             price_s = r.price if r.price is not None else "NONE"
-            # Flag Allo OOS sentinel so caller knows the site is accessible, just OOS
-            oos_note = ""
-            if store == "allo" and r.price == "0" or (r.price is not None and r.price.startswith("0.")):
-                oos_note = " [OOS-sentinel: price=0 means out-of-stock, not blocked]"
             avail_s = r.availability or "-"
             antibot_s = f" [ANTIBOT: {r.antibot_notes}]" if r.antibot else ""
             print(f"  [{status_s}] {short}")
-            print(f"         price={price_s}  avail={avail_s}  method={r.method}{oos_note}{antibot_s}")
+            print(f"         price={price_s}  avail={avail_s}  method={r.method}{antibot_s}")
 
     # Summary
     print(f"\n{'='*60}")
