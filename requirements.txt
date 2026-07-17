@@ -1,0 +1,6 @@
+httpx
+selectolax
+PyYAML
+matplotlib
+
+# fallback if selectolax lacks cp314 wheel: beautifulsoup4, lxml

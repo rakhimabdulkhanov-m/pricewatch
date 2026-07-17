@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-07-17T13:19:37Z",
+  "items": {
+    "iphone-15-128": {
+      "stub": {
+        "price": 32999,
+        "in_stock": true,
+        "name": "Apple iPhone 15 128GB (stub)"
+      }
+    }
+  },
+  "_failures": {}
+}

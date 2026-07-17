@@ -1,0 +1,8 @@
+stores:
+  - stub
+
+products:
+  - id: iphone-15-128
+    name: "Apple iPhone 15 128GB"
+    urls:
+      stub: "https://example.com/iphone-15-128"
