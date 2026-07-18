@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-07-18T09:16:25Z",
+  "checked_at": "2026-07-18T10:43:17Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -148,9 +148,14 @@
         "in_stock": true,
         "name": "Робот-пилосос Xiaomi S40 White (1163555)"
       }
+    },
+    "macbook-air-m2-256": {
+      "prom": {
+        "price": 40395,
+        "in_stock": true,
+        "name": "Ноутбук 13.6&quot; Apple MacBook Air M2 8GB RAM 256Gb SSD IPS Midnight Apple Care (2049)"
+      }
     }
   },
-  "_failures": {
-    "macbook-air-m2-256/prom": 1
-  }
+  "_failures": {}
 }
