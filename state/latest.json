@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-07-18T10:43:17Z",
+  "checked_at": "2026-07-18T13:56:10Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -157,5 +157,17 @@
       }
     }
   },
-  "_failures": {}
+  "_failures": {
+    "samsung-s25-256/moyo": 1,
+    "iphone-17-256/moyo": 1,
+    "iphone-16-128/moyo": 1,
+    "iphone-16e-128/moyo": 1,
+    "samsung-s25fe-512/moyo": 1,
+    "samsung-a56-256/moyo": 1,
+    "sony-wh1000xm5/moyo": 1,
+    "jbl-tune-720bt/moyo": 1,
+    "samsung-tv-65u8000/moyo": 1,
+    "playstation-5-slim/moyo": 1,
+    "xiaomi-vacuum-s40/moyo": 1
+  }
 }
