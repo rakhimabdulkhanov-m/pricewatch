@@ -1,0 +1,67 @@
+name: PriceWatch Monitor
+
+# Runs every 3 hours (at minute 17) and can be triggered manually.
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+# Write permission is required to push the updated state file back.
+permissions:
+  contents: write
+
+# Only one monitor run at a time; queued runs wait rather than cancel.
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        id: install
+        run: pip install -r requirements.txt
+
+      # Exit code semantics from monitor/run.py:
+      #   0  — all OK or ≤50 % fetch failures (normal flakiness)
+      #   1  — strictly more than half of fetch attempts failed
+      # Either way the state file may have been updated and must be committed.
+      - name: Run monitor
+        run: python -m monitor.run
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          SHEETS_WEBHOOK_URL: ${{ secrets.SHEETS_WEBHOOK_URL }}
+          TG_CHANNEL_ID: ${{ vars.TG_CHANNEL_ID }}
+
+      # Commit updated state back to the repository.
+      # Conditions:
+      #   - Runs even when the monitor step exited non-zero (partial failure).
+      #   - Does NOT run if checkout or dependency install failed (install id check).
+      #   - Is a no-op commit when nothing in state/ changed — the workflow stays green.
+      - name: Commit updated state
+        # always() is required: without a status-check function GitHub implies
+        # success(), which would skip this step on the exact partial-failure
+        # runs whose state we most need to keep.
+        if: always() && steps.install.outcome == 'success'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state/
+          git diff --staged --quiet && echo "state unchanged" && exit 0
+          git commit -m "state: $(date -u +%FT%TZ)"
+          git pull --rebase --autostash
+          git push
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

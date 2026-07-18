@@ -1,8 +1,89 @@
 stores:
-  - stub
+  - moyo
+  - prom
 
 products:
-  - id: iphone-15-128
-    name: "Apple iPhone 15 128GB"
+  - id: samsung-s25-256
+    name: "Samsung Galaxy S25 12/256GB"
     urls:
-      stub: "https://example.com/iphone-15-128"
+      moyo: "https://www.moyo.ua/smartfon_samsung_galaxy_s25_12_256gb_navy_sm-s931bdbgeuc_/628576.html"
+      prom: "https://prom.ua/p2522577495-smartfon-samsung-galaxy.html"
+
+  - id: iphone-17-256
+    name: "Apple iPhone 17 256GB"
+    urls:
+      moyo: "https://www.moyo.ua/ua/smartfon_apple_iphone_17_256gb_lavender_mg6m4af_a/674529.html"
+      prom: "https://prom.ua/ua/m994989180115306954-smartfon-apple-iphone.html"
+
+  - id: iphone-16-128
+    name: "Apple iPhone 16 128GB"
+    urls:
+      moyo: "https://www.moyo.ua/smartfon_apple_iphone_16_128gb_black/600446.html"
+      prom: "https://prom.ua/ua/m-1830186130835876250-smartfon-apple-iphone.html"
+
+  - id: iphone-16e-128
+    name: "Apple iPhone 16e 128GB"
+    urls:
+      moyo: "https://www.moyo.ua/ua/smartfon_apple_iphone_16e_128gb_black/636761.html"
+      prom: "https://prom.ua/m-5479762705804715760-mobilnyj-telefon-apple.html"
+
+  - id: samsung-s25fe-512
+    name: "Samsung Galaxy S25 FE 8/512GB"
+    urls:
+      moyo: "https://www.moyo.ua/ua/smartfon_samsung_galaxy_s25_fe_5g_8_512gb_navy_sm-s731bdbieuc/664320.html"
+      prom: "https://prom.ua/m-4610713561837254096-smartfon-samsung-galaxy.html"
+
+  - id: samsung-a56-256
+    name: "Samsung Galaxy A56 5G 8/256GB"
+    urls:
+      moyo: "https://www.moyo.ua/smartfon_samsung_galaxy-a56_5g_8_256gb_black_sm-a566bzkceuc_/635325.html"
+      prom: "https://prom.ua/m-650406798169564727-smartfon-samsung-galaxy.html"
+
+  - id: sony-wh1000xm5
+    name: "Sony WH-1000XM5 Wireless Headphones"
+    urls:
+      moyo: "https://www.moyo.ua/naushniki_bluetooth_sony_wh-1000xm5_black_wh1000xm5b_ce7_/525256.html"
+      prom: "https://prom.ua/p1886557925-naushniki-sony-1000xm5.html"
+
+  - id: airpods-pro-2
+    name: "Apple AirPods Pro 2nd Gen (USB-C)"
+    urls:
+      prom: "https://prom.ua/ua/p1986652493-naushniki-apple-airpods.html"
+
+  - id: jbl-tune-720bt
+    name: "JBL Tune 720BT Wireless Headphones"
+    urls:
+      moyo: "https://www.moyo.ua/ua/naushniki_bluetooth_jbl_tune_720bt_white_jblt720btwht_/615896.html"
+      prom: "https://prom.ua/m5323075096187099149-naushniki-jbl-tune.html"
+
+  - id: samsung-tv-65u8000
+    name: "Samsung 65\" Crystal UHD 4K U8000F"
+    urls:
+      moyo: "https://www.moyo.ua/ua/televizor_samsung_65u8000f_ue65u8000fuxua_/640630.html"
+      prom: "https://prom.ua/m5761923054727818984-televizor-samsung-ue65u8000f.html"
+
+  - id: playstation-5-slim
+    name: "Sony PlayStation 5 Slim"
+    urls:
+      moyo: "https://www.moyo.ua/ua/igrovaya_konsol_playstation_5_slim/569110.html"
+      prom: "https://touch.prom.ua/ua/p2031737662-igrovaya-konsol-sony.html"
+
+  - id: macbook-air-m2-256
+    name: "Apple MacBook Air 13.6\" M2 8/256GB"
+    urls:
+      prom: "https://prom.ua/ua/m-5087749967460683726-noutbuk-136-apple.html"
+
+  - id: apple-watch-s10-46
+    name: "Apple Watch Series 10 GPS 46mm"
+    urls:
+      prom: "https://prom.ua/ua/m-2469828316202826046-smart-chasy-apple.html"
+
+  - id: samsung-watch7-44
+    name: "Samsung Galaxy Watch 7 44mm"
+    urls:
+      prom: "https://prom.ua/ua/m4513768332139071392-rozumnij-godinnik-samsung.html"
+
+  - id: xiaomi-vacuum-s40
+    name: "Xiaomi Robot Vacuum S40"
+    urls:
+      moyo: "https://www.moyo.ua/ua/robot-pylosos_xiaomi_s40_white_1163555/685225.html"

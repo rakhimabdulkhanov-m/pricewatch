@@ -1,0 +1,50 @@
+name: PriceWatch Weekly Report
+
+# Runs every Sunday at 06:17 UTC (~09:17 Kyiv in summer / UTC+3).
+# Can also be triggered manually for testing or backfills.
+on:
+  schedule:
+    - cron: "17 6 * * 0"
+  workflow_dispatch:
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # monitor/report.py __main__ block:
+      #   1. Calls sheets.get_history(days=7) using SHEETS_WEBHOOK_URL.
+      #   2. Renders EN chart to pricewatch_weekly_en.png (cwd).
+      #   3. Renders UK chart to publish-assets/pricewatch_weekly_uk.png.
+      #   4. Prints EN caption to stdout (Telegram posting is handled
+      #      internally by report.py via notify.send_photo, per module docs).
+      - name: Generate weekly report
+        run: python -m monitor.report
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          SHEETS_WEBHOOK_URL: ${{ secrets.SHEETS_WEBHOOK_URL }}
+          TG_CHANNEL_ID: ${{ vars.TG_CHANNEL_ID }}
+
+      # Upload the Ukrainian-locale chart as a build artifact so it is
+      # available for download and portfolio use without a separate storage bucket.
+      # warn (not error) when the file is missing so a report.py failure does
+      # not produce a confusing secondary error about the artifact upload.
+      - name: Upload Ukrainian chart artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pricewatch-weekly-uk
+          path: publish-assets/
+          if-no-files-found: warn
