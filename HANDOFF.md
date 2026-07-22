@@ -59,8 +59,11 @@ JetBrains Mono, en/uk locales, percent-change axis). Workflows commit state back
     tests/test_rozetka.py. run.py gained --config/--state. requirements += curl_cffi.
   - Live Rozetka is possible only from a residential IP/proxy (paid, not in the free
     demo): python -m monitor.run --config config/products.rozetka.yaml --state state/rozetka.json
-  - TODO still open: produce the client-facing VISUAL (GIF/before-after screenshot of
-    rozetka_demo.py) — non-technical clients won't run the script.
+  - Client-facing VISUAL done: before/after card (403 wall vs live prices), warm-editorial
+    Sumi-e, EN + UK. scripts/render_bypass_card.py -> rozetka_bypass_en.png +
+    publish-assets/rozetka_bypass_uk.png (2000x2000). Data = live demo 2026-07-22.
+    Optional follow-up: an animated GIF of rozetka_demo.py for worldwide platforms
+    (needs a terminal recorder; static card covers the FH one-image card already).
 - AD-10 language: channel EN, prices ₴; FH card cover assets UK + EN (worldwide market).
 - English-first naming everywhere (IDs, bot pricewatchdemo_bot, repo, tabs).
 - Chart style: warm editorial "Sumi-e" (paper #F4F1EA, ink, accent #B23A2C) — anti-default
