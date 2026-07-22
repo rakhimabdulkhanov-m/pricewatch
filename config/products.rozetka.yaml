@@ -1,0 +1,39 @@
+# Rozetka-only product set for the OPTIONAL residential/local run.
+#
+# Rozetka (Cloudflare-protected) cannot be fetched from the GitHub Actions
+# datacenter IP — see BYPASS.md. This config is NOT used by the cron. Run it
+# out of band from a residential IP, against its OWN state file so it never
+# collides with the cron's state/latest.json:
+#
+#   python -m monitor.run --config config/products.rozetka.yaml --state state/rozetka.json
+#
+# (add --dry-run to preview without writing state / sending messages)
+
+stores:
+  - rozetka
+
+products:
+  - id: rz-samsung-s26-ultra-512-violet
+    name: "Samsung Galaxy S26 Ultra 12/512GB Cobalt Violet"
+    urls:
+      rozetka: "https://rozetka.com.ua/ua/samsung-sm-s948bzvgeuc/p570541936/"
+
+  - id: rz-samsung-s26-plus-512
+    name: "Samsung Galaxy S26 Plus 12/512GB"
+    urls:
+      rozetka: "https://rozetka.com.ua/ua/samsung-sm-s947blbgeuc/p570551059/"
+
+  - id: rz-samsung-s26-ultra-1tb
+    name: "Samsung Galaxy S26 Ultra 16GB/1TB"
+    urls:
+      rozetka: "https://rozetka.com.ua/ua/samsung-sm-s948bzwheuc/p570540496/"
+
+  - id: rz-iphone-17-pro-256-orange
+    name: "Apple iPhone 17 Pro 256GB Cosmic Orange"
+    urls:
+      rozetka: "https://rozetka.com.ua/ua/apple-iphone-17-pro-256gb-cosmic-orange-mg8h4af-a/p543545585/"
+
+  - id: rz-iphone-17-pro-256-blue
+    name: "Apple iPhone 17 Pro 256GB Deep Blue"
+    urls:
+      rozetka: "https://rozetka.com.ua/ua/apple-iphone-17-pro-256gb-deep-blue-mg8j4af-a/p543545605/"

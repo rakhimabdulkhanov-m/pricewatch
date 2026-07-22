@@ -8,6 +8,8 @@ and posts price-change and restock alerts to a Telegram channel.
 ## What it does
 
 - Checks configured product URLs across multiple stores on each run.
+- Includes a Rozetka adapter that passes Cloudflare's TLS fingerprinting for
+  public product data (see [BYPASS.md](BYPASS.md); `python scripts/rozetka_demo.py`).
 - Detects price changes and stock transitions (in-stock / out-of-stock).
 - Appends a timestamped row to a Google Sheets tab for every checked item.
 - Sends a Telegram message for every significant event.

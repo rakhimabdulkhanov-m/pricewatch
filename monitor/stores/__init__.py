@@ -9,12 +9,14 @@ Usage:
 from monitor.stores.base import FetchError, StoreAdapter
 from monitor.stores.moyo import MoyoAdapter
 from monitor.stores.prom import PromAdapter
+from monitor.stores.rozetka import RozetkaAdapter
 from monitor.stores.stub import StubAdapter
 
 _ADAPTERS: dict[str, StoreAdapter] = {
     "stub": StubAdapter(),
     "moyo": MoyoAdapter(),
     "prom": PromAdapter(),
+    "rozetka": RozetkaAdapter(),
 }
 
 

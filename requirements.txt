@@ -1,4 +1,5 @@
 httpx
+curl_cffi
 selectolax
 PyYAML
 matplotlib

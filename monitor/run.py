@@ -225,16 +225,26 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="PriceWatch orchestrator")
     parser.add_argument("--dry-run", action="store_true",
                         help="Fetch and diff without writing state to disk.")
+    parser.add_argument("--config", type=Path, default=CONFIG_PATH,
+                        help="Path to the products YAML (default: config/products.yaml). "
+                             "Use a store-specific config to run one store separately, "
+                             "e.g. the residential Rozetka leg.")
+    parser.add_argument("--state", type=Path, default=STATE_PATH,
+                        help="Path to the state JSON (default: state/latest.json). "
+                             "Pair a separate config with its OWN state file so an "
+                             "out-of-band run never collides with the cron's state.")
     args = parser.parse_args()
 
     dry_run: bool = args.dry_run
+    config_path: Path = args.config
+    state_path: Path = args.state
 
     if dry_run:
         print("[DRY-RUN] State will NOT be written.\n")
 
     # 1. Load config and state.
-    config = load_config(CONFIG_PATH)
-    state = load_state(STATE_PATH)
+    config = load_config(config_path)
+    state = load_state(state_path)
 
     # Detect seed run: no prior items in state (first run or wiped state).
     is_seed = not state.get("items")
@@ -274,7 +284,7 @@ def main() -> None:
     #    without having reported them first.
     if not dry_run:
         state["checked_at"] = timestamp
-        save_state(STATE_PATH, state)
+        save_state(state_path, state)
 
     # 7. Run summary (appears in GitHub Actions log; keep it readable).
     print(
