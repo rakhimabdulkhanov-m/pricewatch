@@ -71,17 +71,35 @@ JetBrains Mono, en/uk locales, percent-change axis). Workflows commit state back
 - 15 products is enough: the case sells the MECHANISM (adding a product = 3 lines of yaml);
   scale is a config knob, not a capability.
 
-## Session B tasks (T11–T12) — the actual point of the next session
+## Session B — status 22.07.2026
 
-1. Verify 3 days of autonomous runs: Actions history green, real price events in channel,
-   history rows growing. If runs failed — debug first.
-2. Trigger/verify weekly chart posts to channel (workflow_dispatch weekly.yml if needed).
-3. Groom demo data: pick the most visually interesting real week window for the case chart.
-4. Covers: UK + EN versions for FH portfolio card (FH card = ONE image, no gallery;
-   upload 2160×2160, FH downscales). Reuse chartstyle Sumi-e language.
-5. FH portfolio case text (UK) + EN version for worldwide platforms. Style per cases.md
-   principle 3 (warm editorial). Max perceived value (memory: dont-undersell).
-6. Publish card on FH, update profile.
+DONE:
+- Runs verified: monitor.yml green every ~3h across 20–22.07; weekly.yml posted once
+  Sun 19.07 (only ~1.5 days data then). Real state = 15 products / 25 pairs, live
+  moyo+prom prices, some genuinely out-of-stock. Data is real and honest.
+- Case text drafted: fh-case.md (uk/ru/en), buyer-psychology-first, honest-data +
+  live-channel-first voice (mirrors case1/case2), Rozetka bypass woven in + linked.
+- Bypass fully shipped (see the decisions block above).
+
+HELD / NEXT — resume ~Sun 26.07 (user decision 22.07: wait for a full 7-day chart
+so the hero has real movement; 4 days is too flat):
+1. Weekly chart: confirm weekly.yml posted a full 7-day chart Sun 26.07 (or
+   workflow_dispatch it once ≥7 days of history since the 18.07 seed exist, i.e. ≥25.07).
+   NOTE: the repo's pricewatch_weekly_en.png is STALE STUB data (Samsung TV/Dyson,
+   pre-seed dates) — do NOT ship it; render from real Sheet history.
+2. Groom: pick the week window with the most visible movement; confirm the channel
+   has a few clean real alerts (not just the seed msg); set Sheet share = anyone-with-
+   link-can-view and fill [SHEET_VIEW_URL] in fh-case.md (public sheet URL not yet
+   recorded anywhere — get it from the live spreadsheet).
+3. Cover (FH one image = the APP, NOT the bypass card): hero = the real weekly chart
+   + title + one-line payoff. uk + en, 2160×2160, cover HTML → headless Chrome, reuse
+   chartstyle. Design it AROUND the real chart on 26.07 (not before — avoids rework).
+4. Publish FH card (cover-uk, category per bid), paste fh-case.md Title/Description (uk).
+   Update profile. Add en set + bypass card (publish-assets/rozetka_bypass_*.png) to
+   Upwork/PPH when those go live.
+
+Kickoff for the 26.07 session: "read HANDOFF.md in case3-pricewatch — finish + publish
+case3 per the HELD/NEXT list (full-week chart is now available)."
 
 ## Post-launch chores (low priority)
 
