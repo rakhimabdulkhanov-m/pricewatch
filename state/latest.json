@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-07-22T08:47:36Z",
+  "checked_at": "2026-07-22T11:22:38Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -9,7 +9,7 @@
       },
       "prom": {
         "price": 30055,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смартфон Samsung Galaxy S25 12/256GB Blueblack (SM-S931BZKG)"
       }
     },
