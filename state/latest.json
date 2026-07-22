@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-07-22T11:22:38Z",
+  "checked_at": "2026-07-22T14:24:58Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -68,9 +68,9 @@
         "name": "Смартфон Samsung Galaxy A56 5G 8/256Gb Graphite (SM-A566BZKCEUC)"
       },
       "prom": {
-        "price": 19229,
-        "in_stock": true,
-        "name": "Смартфон Samsung Galaxy A56 5G (8+256Gb) Awesome Light Gray"
+        "price": 17599,
+        "in_stock": false,
+        "name": "Смартфон Samsung Galaxy A56 5G 8/256GB Awesome Light Gray"
       }
     },
     "sony-wh1000xm5": {
@@ -99,9 +99,9 @@
         "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       },
       "prom": {
-        "price": 2400,
+        "price": 2199,
         "in_stock": true,
-        "name": "JBL Tune 720BT White (JBLT720BTWHT)"
+        "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       }
     },
     "samsung-tv-65u8000": {
