@@ -1,5 +1,16 @@
 # Bypassing Cloudflare on Rozetka (anti-bot scraping)
 
+![Plain Python is blocked with HTTP 403; the Chrome-TLS adapter returns live Rozetka prices](rozetka_bypass_en.png)
+
+**Short version, no jargon.** Rozetka blocks ordinary scrapers outright. PriceWatch
+reads its public prices anyway — in milliseconds, without opening a browser. It works
+from a home internet connection; from a rented server Cloudflare blocks it whatever
+you do, which is why Rozetka is deliberately kept out of the round-the-clock monitor.
+The picture above is one real run: same URL, same second, blocked on the left, live
+prices on the right. The rest of this page is the how and the proof.
+
+---
+
 Rozetka (rozetka.com.ua) is Ukraine's largest electronics marketplace and sits
 behind Cloudflare. A normal scraper gets HTTP 403 "Just a moment..." on every
 request — including `robots.txt`. This note documents how PriceWatch reads live
