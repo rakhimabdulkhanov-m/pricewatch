@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: 'Literata';
+    src: url('../assets/fonts/Literata-Regular.ttf') format('truetype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Literata';
+    src: url('../assets/fonts/Literata-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: 'Literata';
+    src: url('../assets/fonts/Literata-Bold.ttf') format('truetype');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../assets/fonts/JetBrainsMonoNL-Regular.ttf') format('truetype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../assets/fonts/JetBrainsMonoNL-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1080px; overflow: hidden; }
+  body {
+    background: #f4f1ea;
+    font-family: 'Literata', serif;
+    color: #2b2620;
+    position: relative;
+  }
+  /* faint edge rule for print feel */
+  body::after {
+    content: '';
+    position: absolute;
+    inset: 26px;
+    border: 1px solid rgba(43, 38, 32, 0.14);
+    pointer-events: none;
+  }
+
+  .text {
+    position: absolute;
+    top: 84px;
+    left: 88px;
+    width: 904px;
+  }
+  .overline {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.14em;
+    color: #b23a2c;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 92px;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 26px;
+  }
+  .rule {
+    width: 76px;
+    height: 5px;
+    background: #b23a2c;
+    margin-bottom: 26px;
+  }
+  .subtitle {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.4;
+    color: #55503f;
+    width: 760px;
+  }
+
+  .chart {
+    position: absolute;
+    left: 88px;
+    top: 520px;
+    width: 830px;
+  }
+  .chart img { display: block; width: 100%; }
+
+  .mover {
+    position: absolute;
+    left: 88px;
+    right: 88px;
+    top: 428px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 27px;
+    color: #b23a2c;
+    white-space: nowrap;
+  }
+  .mover .lead {
+    display: block;
+    font-family: 'Literata', serif;
+    font-weight: 400;
+    font-size: 21px;
+    color: #7d7666;
+    margin-bottom: 12px;
+  }
+
+  .foot {
+    position: absolute;
+    left: 88px;
+    right: 88px;
+    bottom: 74px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 22px;
+    border-top: 1px solid rgba(43, 38, 32, 0.22);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    white-space: nowrap;
+  }
+  .foot .handle { font-weight: 600; color: #2b2620; }
+  .foot .stats { font-weight: 400; color: #55503f; }
+  .foot .stats b { color: #b23a2c; font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="text">
+    <div class="overline">Моніторинг цін · Telegram-бот</div>
+    <h1>PriceWatch</h1>
+    <div class="rule"></div>
+    <div class="subtitle">Стежить за цінами й наявністю в кількох магазинах і пінгує
+      в Telegram, щойно ціна впала або товар зник з полиці.</div>
+  </div>
+
+  <div class="chart">
+    <img src="cover-chart-uk.png" alt="">
+  </div>
+
+  <div class="mover">
+    <span class="lead">Найбільша зміна тижня ({{RANGE}}), зловлена автоматично:</span>
+    {{MOVER}}
+  </div>
+
+  <div class="foot">
+    <div class="handle">t.me/pricewatch_demo</div>
+    <div class="stats">кожні <b>3 год</b> · <b>25</b> пар товар-магазин · <b>0 ₴/міс</b></div>
+  </div>
+</body>
+</html>
