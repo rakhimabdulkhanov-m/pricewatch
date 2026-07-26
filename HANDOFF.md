@@ -83,10 +83,17 @@ DONE:
 
 HELD / NEXT — resume ~Sun 26.07 (user decision 22.07: wait for a full 7-day chart
 so the hero has real movement; 4 days is too flat):
-1. Weekly chart: confirm weekly.yml posted a full 7-day chart Sun 26.07 (or
-   workflow_dispatch it once ≥7 days of history since the 18.07 seed exist, i.e. ≥25.07).
-   NOTE: the repo's pricewatch_weekly_en.png is STALE STUB data (Samsung TV/Dyson,
-   pre-seed dates) — do NOT ship it; render from real Sheet history.
+1. DONE 26.07: full-week chart posted (19 Jul – 26 Jul, real Sheet data, top mover
+   JBL 2400 → 1999 ₴ −16.7%). Local pricewatch_weekly_en.png +
+   publish-assets/pricewatch_weekly_uk.png are the real render (both gitignored).
+   Fixed on the way (commit fca9619): the report derived its window from min/max
+   history timestamps, but history is a CHANGE-LOG, so quiet days shrank the
+   "week" — the 26.07 post said "first 5 days" on day 8. Window is now calendar
+   (now − 7d, clamped to first row ever), week-start price is carried forward from
+   the last change before the window, chart spans the full window with steps-post
+   lines, headers show the real date range. The old "first 5 days" post (msg 37)
+   was deleted from the channel and replaced. Msg ~14 from 19.07 still reads
+   "first 1 days" — harmless, delete only if the channel scroll matters.
 2. Groom: pick the week window with the most visible movement; confirm the channel
    has a few clean real alerts (not just the seed msg); set Sheet share = anyone-with-
    link-can-view and fill [SHEET_VIEW_URL] in fh-case.md (public sheet URL not yet
