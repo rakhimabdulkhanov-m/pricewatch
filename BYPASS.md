@@ -3,7 +3,7 @@
 ![Plain Python is blocked with HTTP 403; the Chrome-TLS adapter returns live Rozetka prices](rozetka_bypass_en.png)
 
 **Short version, no jargon.** Rozetka blocks ordinary scrapers outright. PriceWatch
-reads its public prices anyway — in milliseconds, without opening a browser. It works
+reads its public prices anyway, in milliseconds, without opening a browser. It works
 from a home internet connection; from a rented server Cloudflare blocks it whatever
 you do, which is why Rozetka is deliberately kept out of the round-the-clock monitor.
 The picture above is one real run: same URL, same second, blocked on the left, live
@@ -13,8 +13,8 @@ prices on the right. The rest of this page is the how and the proof.
 
 Rozetka (rozetka.com.ua) is Ukraine's largest electronics marketplace and sits
 behind Cloudflare. A normal scraper gets HTTP 403 "Just a moment..." on every
-request — including `robots.txt`. This note documents how PriceWatch reads live
-Rozetka prices anyway, for public product data, and — just as important — where
+request, including `robots.txt`. This note documents how PriceWatch reads live
+Rozetka prices anyway, for public product data, and, just as important, where
 the honest limits are.
 
 ## Reproduce it in 20 seconds
@@ -25,7 +25,7 @@ python scripts/rozetka_demo.py
 ```
 
 On each live product it runs plain `httpx` first, then the adapter. Same URL,
-same headers, same IP — plain Python is blocked, the adapter passes:
+same headers, same IP. Plain Python is blocked, the adapter passes:
 
 ```
 * /ua/samsung-sm-s948bzvgeuc/p570541936/
@@ -35,28 +35,28 @@ same headers, same IP — plain Python is blocked, the adapter passes:
 
 ## Cloudflare defends this in two independent layers
 
-**Layer 1 — passive TLS/JA3 fingerprinting.** Before any HTML is served,
+**Layer 1: passive TLS/JA3 fingerprinting.** Before any HTML is served,
 Cloudflare inspects the TLS handshake. Python's `httpx`/`requests` produce a TLS
 ClientHello that does not look like a browser's, so the request is fingerprinted
-as a bot and 403'd — *even with a perfect `User-Agent: Chrome` header*. The UA
+as a bot and 403'd, *even with a perfect `User-Agent: Chrome` header*. The UA
 string is not the tell; the handshake is.
 
 The fix is not a headless browser. [`curl_cffi`](https://github.com/lexiforest/curl_cffi)
 is libcurl built against BoringSSL and **replays a real Chrome TLS/JA3
 fingerprint** (`impersonate="chrome"`). The handshake now matches Chrome, the
-passive check passes, and the normal server HTML comes back — no JavaScript
+passive check passes, and the normal server HTML comes back: no JavaScript
 engine, no Turnstile solving, milliseconds not seconds. This works here
 specifically because Rozetka runs *passive* fingerprinting, not an interactive
 JS/Turnstile challenge; there is nothing to "solve," only a fingerprint to match.
 
 Extraction after that is trivial: Rozetka embeds `schema.org/Product` JSON-LD in
-the page, so price/stock/name come straight out of `monitor/jsonld.py` — the same
+the page, so price/stock/name come straight out of `monitor/jsonld.py`, the same
 extractor prom.py uses. The demoed skill is the **access**, not the parse.
 
-**Layer 2 — IP-reputation by ASN.** Passing the TLS check is necessary but not
+**Layer 2: IP-reputation by ASN.** Passing the TLS check is necessary but not
 sufficient. Cloudflare *also* scores the source IP's autonomous system. Requests
 from residential/mobile ASNs pass; requests from datacenter ASNs
-(AWS, Azure, GCP — and therefore GitHub Actions runners) get an extra
+(AWS, Azure, GCP, and therefore GitHub Actions runners) get an extra
 Managed Challenge and 403 regardless of a perfect TLS fingerprint.
 
 This is measured, not assumed. The exact same code that returns HTTP 200 from a
@@ -70,7 +70,7 @@ ROZETKA DATACENTER VERDICT: FAIL (0/3 with price)   # from an Actions runner
 ## Consequence for PriceWatch
 
 - moyo and prom are **not** Cloudflare-fingerprinted, so they run in the free
-  GitHub Actions cron as before. Rozetka is **not wired into the cron** — from a
+  GitHub Actions cron as before. Rozetka is **not wired into the cron**: from a
   datacenter IP it can only fail, and a monitor full of failing rows looks broken.
 - The Rozetka adapter (`monitor/stores/rozetka.py`) is production-shaped and
   isolated: the orchestrator catches its errors per (product, store) pair, so
@@ -81,13 +81,13 @@ ROZETKA DATACENTER VERDICT: FAIL (0/3 with price)   # from an Actions runner
     ```
     python -m monitor.run --config config/products.rozetka.yaml --state state/rozetka.json
     ```
-  - in production, a residential/mobile proxy — the standard, cheap
+  - in production, a residential/mobile proxy, the standard and cheap
     (product-data scraping is a few MB) way commercial scrapers handle this.
     That is a paid dependency and deliberately not baked into this free demo.
 
 ## Legality / scope
 
-Public product data only (price, availability, name) — the same data Rozetka
+Public product data only (price, availability, name), the same data Rozetka
 publishes to Google via JSON-LD. No login, no paywall, no personal data, polite
 2–4 s jitter between requests. This is anti-bot *bypass* for public data, not
 account or access-control bypass.
