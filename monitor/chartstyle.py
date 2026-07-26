@@ -34,6 +34,11 @@ import os
 from pathlib import Path
 
 import matplotlib as mpl
+
+# Charts are always rendered to a file, never shown. Force the headless backend
+# so runs never touch Tk (which is absent on CI runners and flaky under pytest).
+mpl.use("Agg")
+
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties, fontManager
 

@@ -28,6 +28,7 @@ History row dict shape (as returned by sheets.get_history):
 from __future__ import annotations
 
 import html
+import re
 import warnings
 
 # JetBrains Mono lacks certain Unicode space characters (U+2009 thin space).
@@ -39,7 +40,7 @@ warnings.filterwarnings(
 )
 
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import NamedTuple
 
@@ -77,28 +78,28 @@ _LOCALE: dict[str, dict[str, str]] = {
     "en": {
         "title": "PriceWatch · Weekly price report",
         "subtitle_full": "{start} – {end}",
-        "subtitle_short": "First {n} days",
+        "subtitle_short": "{start} – {end} · {n} days of history",
         "top_moves_label": "Top moves this week",
-        "top_moves_label_short": "Top moves · first {n} days",
+        "top_moves_label_short": "Top moves · {start} – {end}",
         "no_data": "No data",
         "out_of_stock": "out of stock",
         "back_in_stock": "back in stock",
         "caption_header": "PriceWatch · weekly report {start} – {end}",
-        "caption_header_short": "PriceWatch · first {n} days",
+        "caption_header_short": "PriceWatch · {start} – {end} ({n} days of history)",
         "caption_top3": "Top movers:",
         "y_axis_label": "change from start",
     },
     "uk": {
         "title": "PriceWatch · Тижневий звіт цін",
         "subtitle_full": "{start} – {end}",
-        "subtitle_short": "Перші {n} днів",
+        "subtitle_short": "{start} – {end} · {n} днів історії",
         "top_moves_label": "Найбільші зміни тижня",
-        "top_moves_label_short": "Топ змін · перші {n} днів",
+        "top_moves_label_short": "Топ змін · {start} – {end}",
         "no_data": "Немає даних",
         "out_of_stock": "немає в наявності",
         "back_in_stock": "знову в наявності",
         "caption_header": "PriceWatch · тижневий звіт {start} – {end}",
-        "caption_header_short": "PriceWatch · перші {n} днів",
+        "caption_header_short": "PriceWatch · {start} – {end} ({n} днів історії)",
         "caption_top3": "Топ змін:",
         "y_axis_label": "зміна від початку",
     },
@@ -211,13 +212,57 @@ def _select_top_movers(
     return [k for k, _ in scored[:limit]]
 
 
-def _window_info(history: list[dict]) -> tuple[datetime, datetime, int]:
-    """Return (min_ts, max_ts, days_in_window)."""
+def _window_info(
+    history: list[dict],
+    window_days: int = 7,
+    now: datetime | None = None,
+) -> tuple[datetime, datetime, int, bool]:
+    """Return (t_start, t_end, span_days, is_full_window) for the report window.
+
+    The window is CALENDAR-based, not data-based: history rows are appended only
+    when a price/stock actually changes, so deriving the window from min/max row
+    timestamps made the reported span jump around (a quiet Monday shortened the
+    "week"). t_end is *now* (or the newest row when now is not given), t_start is
+    t_end minus *window_days* — clamped to the first row ever recorded, so a
+    genuinely young history reports its real age instead of a fake full week.
+    """
     timestamps = [_parse_ts(r["checked_at_utc"]) for r in history]
-    t_min = min(timestamps)
-    t_max = max(timestamps)
-    days = max(1, round((t_max - t_min).total_seconds() / 86400))
-    return t_min, t_max, days
+    data_start = min(timestamps)
+    t_end = now if now is not None else max(timestamps)
+    t_start = t_end - timedelta(days=window_days)
+    is_full = data_start <= t_start
+    if not is_full:
+        t_start = data_start
+    span_days = max(1, round((t_end - t_start).total_seconds() / 86400))
+    return t_start, t_end, span_days, is_full
+
+
+def _clip_series(
+    series: dict[tuple[str, str], list[_SeriesPoint]],
+    t_start: datetime,
+    t_end: datetime,
+) -> dict[tuple[str, str], list[_SeriesPoint]]:
+    """Clip each price series to [t_start, t_end] with carry-forward edges.
+
+    History is a change-log: between two rows the price simply stayed the same.
+    So the last price known BEFORE the window is carried forward to t_start
+    (giving every series a real week-start baseline instead of starting at its
+    first mid-week change), and the last in-window price is carried to t_end.
+    """
+    out: dict[tuple[str, str], list[_SeriesPoint]] = {}
+    for key, pts in series.items():
+        before = [p for p in pts if p.ts <= t_start]
+        inside = [p for p in pts if t_start < p.ts <= t_end]
+        clipped: list[_SeriesPoint] = []
+        if before:
+            clipped.append(_SeriesPoint(ts=t_start, price=before[-1].price))
+        clipped.extend(inside)
+        if not clipped:
+            continue
+        if clipped[-1].ts < t_end:
+            clipped.append(_SeriesPoint(ts=t_end, price=clipped[-1].price))
+        out[key] = clipped
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -239,12 +284,42 @@ def _top_moves_rows(
     return [(k, pts) for k, pts, _ in scored[:max_rows]]
 
 
+_SKU_CHUNK = re.compile(r"\s*[\(\[][^\)\]]*\d[^\)\]]*[\)\]]")
+
+
+def _display_name(name: str) -> str:
+    """Strip store SKU noise from a product title for display.
+
+    Store titles carry article codes the reader does not need:
+    'Sony PlayStation 5 Slim 1TB White (1000040591) [94342]' -> '... White'.
+    Only bracketed chunks containing a digit are removed, so model names in
+    parentheses survive.
+    """
+    cleaned = " ".join(_SKU_CHUNK.sub("", name).split())
+    return cleaned or name
+
+
+def _brand_name(name: str) -> str:
+    """Drop the leading Cyrillic category words from a store title.
+
+    Store titles start with a category noun the chart axis does not need:
+    'Смартфон Apple iPhone 17 Pro' -> 'Apple iPhone 17 Pro'. Cut at the first
+    token carrying a Latin letter or digit; if there is none (an all-Cyrillic
+    title), keep the title as is.
+    """
+    words = _display_name(name).split()
+    for i, w in enumerate(words):
+        if re.search(r"[A-Za-z0-9]", w):
+            return " ".join(words[i:])
+    return _display_name(name)
+
+
 def _name_for(key: tuple[str, str], history: list[dict]) -> str:
-    """Look up the product name for (product_id, store) from raw history."""
+    """Look up the display product name for (product_id, store)."""
     pid, store = key
     for row in history:
         if row["product_id"] == pid and row["store"] == store:
-            return row["name"]
+            return _display_name(row["name"])
     return pid
 
 
@@ -300,6 +375,8 @@ def build_chart(
     history: list[dict],
     locale: str = "en",
     out_path: str | Path | None = None,
+    window_days: int = 7,
+    now: datetime | None = None,
 ) -> Path:
     """Render weekly price chart from *history* rows.
 
@@ -316,6 +393,11 @@ def build_chart(
     out_path:
         Where to save the PNG.  Defaults to 'pricewatch_weekly_{locale}.png'
         in the current directory.
+    window_days:
+        Length of the reported window in days (default 7).
+    now:
+        End of the window (UTC).  Defaults to the newest row in *history*;
+        the scheduled run passes the real current time.
 
     Returns
     -------
@@ -339,10 +421,12 @@ def build_chart(
             plt.close(fig)
         return out_path
 
-    t_min, t_max, days = _window_info(history)
-    series = _build_series(history)
+    t_min, t_max, days, is_full = _window_info(history, window_days, now)
+    series = _clip_series(_build_series(history), t_min, t_max)
+    if not series:
+        series = _build_series(history)
     top_keys = _select_top_movers(series, n=5)
-    short_window = days < 7
+    short_window = not is_full
 
     months = _months(locale)
     date_fmt_str = "%d %b"
@@ -422,16 +506,20 @@ def build_chart(
                 color=color,
                 alpha=alpha,
                 linewidth=lw,
+                # A price holds until the next change: step, not a slope.
+                drawstyle="steps-post",
                 solid_capstyle="round",
                 solid_joinstyle="round",
                 zorder=3 - i,
             )
 
-            short = _short_name(name)
+            short = _short_name(_brand_name(name), max_chars=22)
             label_text = f"{short}  {fmt_price(pts[-1].price)} {_UAH}"
             label_pts.append((pcts[-1], pts[-1].price, last_ts_num, color, label_text, alpha))
 
         ax_chart.set_ylim(y_min_plot, y_max_plot)
+        # Full calendar window, so a quiet day cannot shrink the chart.
+        ax_chart.set_xlim(mdates.date2num(t_min), mdates.date2num(t_max))
         # Ensure 0% baseline reference is visible
         ax_chart.axhline(0, color=chartstyle.SPINE_COLOR, linewidth=0.5, zorder=0)
 
@@ -489,7 +577,7 @@ def build_chart(
         # ----------------------------------------------------------------
         title_text = _L(locale, "title")
         subtitle_text = (
-            _L(locale, "subtitle_short", n=days)
+            _L(locale, "subtitle_short", start=start_str, end=end_str, n=days)
             if short_window
             else _L(locale, "subtitle_full", start=start_str, end=end_str)
         )
@@ -515,7 +603,7 @@ def build_chart(
 
         strip_moves = _top_moves_rows(series, history, max_rows=3)
         strip_label = (
-            _L(locale, "top_moves_label_short", n=days)
+            _L(locale, "top_moves_label_short", start=start_str, end=end_str)
             if short_window
             else _L(locale, "top_moves_label")
         )
@@ -566,7 +654,12 @@ def build_chart(
 # Caption builder
 # ---------------------------------------------------------------------------
 
-def weekly_caption(history: list[dict], locale: str = "en") -> str:
+def weekly_caption(
+    history: list[dict],
+    locale: str = "en",
+    window_days: int = 7,
+    now: datetime | None = None,
+) -> str:
     """Return HTML-safe Telegram caption with top-3 movers.
 
     Uses U+2009 thin space as thousands separator and U+2212 true minus.
@@ -575,16 +668,18 @@ def weekly_caption(history: list[dict], locale: str = "en") -> str:
     if not history:
         return html.escape(_L(locale, "no_data"))
 
-    t_min, t_max, days = _window_info(history)
-    series = _build_series(history)
-    short_window = days < 7
+    t_min, t_max, days, is_full = _window_info(history, window_days, now)
+    series = _clip_series(_build_series(history), t_min, t_max)
+    if not series:
+        series = _build_series(history)
+    short_window = not is_full
 
     months = _months(locale)
     start_str = f"{t_min.day:02d} {months[t_min.month - 1]}"
     end_str = f"{t_max.day:02d} {months[t_max.month - 1]}"
 
     header = (
-        _L(locale, "caption_header_short", n=days)
+        _L(locale, "caption_header_short", start=start_str, end=end_str, n=days)
         if short_window
         else _L(locale, "caption_header", start=start_str, end=end_str)
     )
@@ -615,9 +710,18 @@ def weekly_caption(history: list[dict], locale: str = "en") -> str:
 
 if __name__ == "__main__":
     import sys
+    from datetime import timezone
     from monitor import notify, sheets
+    from monitor.envfile import load_dotenv
 
-    history = sheets.get_history(days=7)
+    # In Actions the secrets are already in the environment; locally they are not.
+    load_dotenv(".env")
+
+    WINDOW_DAYS = 7
+    # Fetch well beyond the window: history is a change-log, so the price at the
+    # start of the week may have last been written weeks earlier. _clip_series
+    # carries that row forward as the week-start baseline.
+    history = sheets.get_history(days=WINDOW_DAYS * 8)
     if not history:
         print(
             "[report] get_history returned None or empty — nothing to post",
@@ -625,11 +729,18 @@ if __name__ == "__main__":
         )
         sys.exit(0)
 
+    run_now = datetime.now(timezone.utc)
+
     # EN chart: render and post to Telegram.
-    en_path = build_chart(history, locale="en", out_path="pricewatch_weekly_en.png")
+    en_path = build_chart(
+        history, locale="en", out_path="pricewatch_weekly_en.png",
+        window_days=WINDOW_DAYS, now=run_now,
+    )
     print(f"[report] EN chart: {en_path.resolve()}")
 
-    caption = weekly_caption(history, locale="en")
+    caption = weekly_caption(
+        history, locale="en", window_days=WINDOW_DAYS, now=run_now,
+    )
     ok = notify.send_photo(en_path, caption)
     if ok:
         print("[report] EN chart posted to Telegram")
@@ -642,5 +753,6 @@ if __name__ == "__main__":
     uk_path = build_chart(
         history, locale="uk",
         out_path=uk_dir / "pricewatch_weekly_uk.png",
+        window_days=WINDOW_DAYS, now=run_now,
     )
     print(f"[report] UK chart: {uk_path.resolve()}")

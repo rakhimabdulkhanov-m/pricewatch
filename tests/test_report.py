@@ -120,6 +120,8 @@ FIXTURE_3D: list[dict] = [
 # Imports under test
 # ---------------------------------------------------------------------------
 
+from datetime import datetime, timezone
+
 from monitor.report import (
     fmt_price,
     fmt_pct,
@@ -129,6 +131,8 @@ from monitor.report import (
     build_chart,
     _parse_ts,
     _build_series,
+    _window_info,
+    _clip_series,
     _select_top_movers,
     _top_moves_rows,
     _LOCALE,
@@ -423,13 +427,25 @@ class TestCaptionHtmlSafety(unittest.TestCase):
 
 class TestShortWindowDegradation(unittest.TestCase):
 
-    def test_caption_says_first_n_days_en(self):
+    def test_caption_says_real_date_range_en(self):
         caption = weekly_caption(FIXTURE_3D, locale="en")
-        self.assertIn("first", caption.lower())
+        self.assertIn("11 Jul", caption)
+        self.assertIn("13 Jul", caption)
+        self.assertIn("days of history", caption)
 
-    def test_caption_says_first_n_days_uk(self):
+    def test_caption_says_real_date_range_uk(self):
         caption = weekly_caption(FIXTURE_3D, locale="uk")
-        self.assertIn("перші", caption.lower())  # "перші"
+        self.assertIn("11 лип", caption)
+        self.assertIn("днів історії", caption)
+
+    def test_short_window_reports_true_age_not_window_length(self):
+        """A 3-day history must say 3 days, never a fake full week."""
+        caption = weekly_caption(FIXTURE_3D, locale="en")
+        self.assertIn("(2 days of history)", caption)
+
+    def test_full_window_header_has_no_history_note(self):
+        caption = weekly_caption(FIXTURE_7D, locale="en")
+        self.assertNotIn("days of history", caption)
 
     def test_chart_short_window_produces_file(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -437,6 +453,82 @@ class TestShortWindowDegradation(unittest.TestCase):
             result = build_chart(FIXTURE_3D, locale="en", out_path=out)
             self.assertTrue(result.exists(), "PNG file was not created")
             self.assertGreater(result.stat().st_size, 5000, "PNG too small")
+
+
+# ---------------------------------------------------------------------------
+# Calendar window + change-log carry-forward
+# ---------------------------------------------------------------------------
+
+class TestCalendarWindow(unittest.TestCase):
+    """History is a change-log: quiet days must not shrink the reported window."""
+
+    def _now(self, day: int, hour: int = 6) -> datetime:
+        return datetime(2026, 7, day, hour, tzinfo=timezone.utc)
+
+    def test_window_is_calendar_not_data_span(self):
+        # Newest row is 18 Jul but the report runs on 20 Jul: window must be
+        # 13 -> 20 Jul, not 11 -> 18 Jul.
+        t_start, t_end, days, is_full = _window_info(
+            FIXTURE_7D, window_days=7, now=self._now(20),
+        )
+        self.assertEqual(t_end, self._now(20))
+        self.assertEqual(t_start, self._now(13))
+        self.assertEqual(days, 7)
+        self.assertTrue(is_full)
+
+    def test_quiet_last_days_still_report_full_week(self):
+        caption = weekly_caption(FIXTURE_7D, locale="en", now=self._now(20))
+        self.assertIn("13 Jul – 20 Jul", caption)
+        self.assertNotIn("days of history", caption)
+
+    def test_young_history_clamps_to_first_row(self):
+        t_start, t_end, days, is_full = _window_info(
+            FIXTURE_7D, window_days=7, now=self._now(14),
+        )
+        self.assertEqual(t_start, _parse_ts("2026-07-11T10:00:00Z"))
+        self.assertFalse(is_full)
+        self.assertEqual(days, 3)
+
+    def test_carry_forward_gives_week_start_baseline(self):
+        # iphone-15 @ moyo last changed 16 Jul (31299). A window starting 18 Jul
+        # must still carry that price forward as a flat baseline.
+        series = _clip_series(
+            _build_series(FIXTURE_7D), self._now(18), self._now(20),
+        )
+        pts = series[("iphone-15", "moyo")]
+        self.assertEqual(pts[0].ts, self._now(18))
+        self.assertEqual(pts[-1].ts, self._now(20))
+        self.assertEqual({p.price for p in pts}, {31299.0})
+
+    def test_series_spans_whole_window(self):
+        series = _clip_series(
+            _build_series(FIXTURE_7D), self._now(13), self._now(20),
+        )
+        self.assertTrue(series)
+        for key, pts in series.items():
+            self.assertEqual(pts[0].ts, self._now(13), f"{key} starts late")
+            self.assertEqual(pts[-1].ts, self._now(20), f"{key} ends early")
+
+    def test_pct_change_measured_from_window_start(self):
+        # samsung-tv-55 @ moyo: last price before 13 Jul 06:00 is the 11 Jul row
+        # (25000) — that is the true week-start price, not the first in-window row.
+        series = _clip_series(
+            _build_series(FIXTURE_7D), self._now(13), self._now(20),
+        )
+        pts = series[("samsung-tv-55", "moyo")]
+        self.assertEqual(pts[0].price, 25000.0)
+        self.assertEqual(pts[-1].price, 22000.0)
+
+    def test_out_of_window_series_dropped(self):
+        series = _clip_series(
+            _build_series(FIXTURE_3D), self._now(25), self._now(26),
+        )
+        # All FIXTURE_3D rows predate the window, but each key has a last-known
+        # price, so every one carries forward as a flat line (nothing dropped).
+        self.assertTrue(series)
+        for pts in series.values():
+            self.assertEqual(len(pts), 2)
+            self.assertEqual(pts[0].price, pts[1].price)
 
 
 # ---------------------------------------------------------------------------
