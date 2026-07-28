@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-07-28T03:38:42Z",
+  "checked_at": "2026-07-28T09:07:46Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -81,7 +81,7 @@
       },
       "prom": {
         "price": 11549,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Навушники Sony WH-1000XM5 Wireless Noise Cancelling Headphones (Silver) [68955]"
       }
     },
