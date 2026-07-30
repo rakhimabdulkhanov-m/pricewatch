@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-07-30T14:35:05Z",
+  "checked_at": "2026-07-30T16:52:29Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -28,7 +28,7 @@
     "iphone-16-128": {
       "moyo": {
         "price": 35999,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смартфон Apple iPhone 16 128GB Black (MYE73SX/A)"
       },
       "prom": {
@@ -99,9 +99,9 @@
         "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       },
       "prom": {
-        "price": 1999,
+        "price": 2400,
         "in_stock": true,
-        "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
+        "name": "JBL Tune 720BT White (JBLT720BTWHT)"
       }
     },
     "samsung-tv-65u8000": {
