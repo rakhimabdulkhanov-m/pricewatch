@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-01T13:58:18Z",
+  "checked_at": "2026-08-01T16:15:36Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -123,7 +123,7 @@
         "name": "Ігрова консоль PlayStation 5 Slim"
       },
       "prom": {
-        "price": 32489,
+        "price": 32449,
         "in_stock": true,
         "name": "Ігрова консоль Sony PlayStation 5 Slim 1TB White (1000040591) [94342]"
       }
@@ -157,7 +157,5 @@
       }
     }
   },
-  "_failures": {
-    "samsung-a56-256/prom": 1
-  }
+  "_failures": {}
 }
