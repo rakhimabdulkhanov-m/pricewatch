@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-02T16:15:12Z",
+  "checked_at": "2026-08-02T19:37:30Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -68,8 +68,8 @@
         "name": "Смартфон Samsung Galaxy A56 5G 8/256Gb Graphite (SM-A566BZKCEUC)"
       },
       "prom": {
-        "price": 19229,
-        "in_stock": true,
+        "price": 17589,
+        "in_stock": false,
         "name": "Смартфон Samsung Galaxy A56 5G (8+256Gb) Awesome Light Gray"
       }
     },
@@ -158,6 +158,6 @@
     }
   },
   "_failures": {
-    "apple-watch-s10-46/prom": 1
+    "sony-wh1000xm5/prom": 1
   }
 }
