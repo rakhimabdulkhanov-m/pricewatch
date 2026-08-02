@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-02T08:39:31Z",
+  "checked_at": "2026-08-02T10:52:50Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -57,7 +57,7 @@
       },
       "prom": {
         "price": 36300,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512GB Icyblue (SM-S731BLBIEUC)"
       }
     },
