@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-02T13:58:11Z",
+  "checked_at": "2026-08-02T16:15:12Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -28,7 +28,7 @@
     "iphone-16-128": {
       "moyo": {
         "price": 35999,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смартфон Apple iPhone 16 128GB Black (MYE73SX/A)"
       },
       "prom": {
@@ -57,7 +57,7 @@
       },
       "prom": {
         "price": 36300,
-        "in_stock": false,
+        "in_stock": true,
         "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512GB Icyblue (SM-S731BLBIEUC)"
       }
     },
@@ -158,6 +158,6 @@
     }
   },
   "_failures": {
-    "samsung-s25fe-512/prom": 1
+    "apple-watch-s10-46/prom": 1
   }
 }
