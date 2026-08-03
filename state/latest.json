@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-03T10:08:24Z",
+  "checked_at": "2026-08-03T15:19:14Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -131,7 +131,7 @@
     "apple-watch-s10-46": {
       "prom": {
         "price": 24767,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смарт-годинник Apple Watch Series 10 GPS 46mm Rose Gold Aluminum Case w."
       }
     },
@@ -157,7 +157,5 @@
       }
     }
   },
-  "_failures": {
-    "samsung-a56-256/prom": 1
-  }
+  "_failures": {}
 }
