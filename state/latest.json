@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-03T03:57:28Z",
+  "checked_at": "2026-08-03T10:08:24Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -34,7 +34,7 @@
       "prom": {
         "price": 41199,
         "in_stock": true,
-        "name": "Мобільний телефон Apple iPhone 16 128GB Black MYE73 mayak"
+        "name": "Мобільний телефон Apple iPhone 16 128GB Black MYE73 buzyna"
       }
     },
     "iphone-16e-128": {
@@ -56,9 +56,9 @@
         "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512Gb Navy (SM-S731BDBIEUC)"
       },
       "prom": {
-        "price": 35999,
+        "price": 36300,
         "in_stock": true,
-        "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512GB Iceblue (SM-S731BLBIEUC)"
+        "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512GB Icyblue (SM-S731BLBIEUC)"
       }
     },
     "samsung-a56-256": {
@@ -99,9 +99,9 @@
         "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       },
       "prom": {
-        "price": 2400,
+        "price": 2206,
         "in_stock": true,
-        "name": "JBL Tune 720BT White (JBLT720BTWHT)"
+        "name": "Навушники JBL Tune 720BT White JBLT720BTWHT buzyna"
       }
     },
     "samsung-tv-65u8000": {
@@ -123,7 +123,7 @@
         "name": "Ігрова консоль PlayStation 5 Slim"
       },
       "prom": {
-        "price": 32449,
+        "price": 32399,
         "in_stock": true,
         "name": "Ігрова консоль Sony PlayStation 5 Slim 1TB White (1000040591) [94342]"
       }
@@ -138,7 +138,7 @@
     "samsung-watch7-44": {
       "prom": {
         "price": 17354,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Розумний годинник Samsung Galaxy Watch7 44 мм зі спортивним ремінцем, розмір гумового ремінця M/L, дисплей 3,7 см, 1,47."
       }
     },
@@ -157,5 +157,7 @@
       }
     }
   },
-  "_failures": {}
+  "_failures": {
+    "samsung-a56-256/prom": 1
+  }
 }
