@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-05T09:08:28Z",
+  "checked_at": "2026-08-05T11:32:15Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -34,7 +34,7 @@
       "prom": {
         "price": 41200,
         "in_stock": true,
-        "name": "Мобільний телефон Apple iPhone 16 128GB Black MYE73 buzyna"
+        "name": "Мобільний телефон Apple iPhone 16 128GB Black MYE73 newyork"
       }
     },
     "iphone-16e-128": {
@@ -80,7 +80,7 @@
         "name": "Наушники Bluetooth Sony WH-1000XM5 Black (WH1000XM5B.CE7)"
       },
       "prom": {
-        "price": 11379,
+        "price": 11339,
         "in_stock": true,
         "name": "Навушники Sony WH-1000XM5 Wireless Noise Cancelling Headphones (Silver) [68955]"
       }
@@ -99,9 +99,9 @@
         "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       },
       "prom": {
-        "price": 2200,
+        "price": 2400,
         "in_stock": true,
-        "name": "Навушники JBL Tune 720BT White JBLT720BTWHT buzyna"
+        "name": "JBL Tune 720BT White (JBLT720BTWHT)"
       }
     },
     "samsung-tv-65u8000": {
@@ -123,7 +123,7 @@
         "name": "Ігрова консоль PlayStation 5 Slim"
       },
       "prom": {
-        "price": 32399,
+        "price": 32389,
         "in_stock": true,
         "name": "Ігрова консоль Sony PlayStation 5 Slim 1TB White (1000040591) [94342]"
       }
