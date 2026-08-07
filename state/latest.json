@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-06T14:37:51Z",
+  "checked_at": "2026-08-07T00:18:16Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -99,7 +99,7 @@
         "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       },
       "prom": {
-        "price": 2206,
+        "price": 2204,
         "in_stock": true,
         "name": "Навушники JBL Tune 720BT White JBLT720BTWHT buzyna"
       }
@@ -157,9 +157,5 @@
       }
     }
   },
-  "_failures": {
-    "iphone-16e-128/prom": 1,
-    "apple-watch-s10-46/prom": 1,
-    "samsung-watch7-44/prom": 1
-  }
+  "_failures": {}
 }
