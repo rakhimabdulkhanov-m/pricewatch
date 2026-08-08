@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-08T19:00:53Z",
+  "checked_at": "2026-08-08T21:51:12Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -20,7 +20,7 @@
         "name": "Смартфон Apple iPhone 17 256GB Lavender (MG6M4AF/A)"
       },
       "prom": {
-        "price": 42225,
+        "price": 42475,
         "in_stock": true,
         "name": "Смартфон Apple iPhone 17 256GB Black"
       }
@@ -34,7 +34,7 @@
       "prom": {
         "price": 41200,
         "in_stock": true,
-        "name": "Мобільний телефон Apple iPhone 16 128GB Black MYE73 buzyna"
+        "name": "Мобільний телефон Apple iPhone 16 128GB Black MYE73 newyork"
       }
     },
     "iphone-16e-128": {
@@ -99,9 +99,9 @@
         "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       },
       "prom": {
-        "price": 2202,
+        "price": 2400,
         "in_stock": true,
-        "name": "Навушники JBL Tune 720BT White JBLT720BTWHT buzyna"
+        "name": "JBL Tune 720BT White (JBLT720BTWHT)"
       }
     },
     "samsung-tv-65u8000": {
@@ -158,6 +158,16 @@
     }
   },
   "_failures": {
-    "samsung-watch7-44/prom": 1
+    "samsung-s25-256/moyo": 1,
+    "iphone-17-256/moyo": 1,
+    "iphone-16-128/moyo": 1,
+    "iphone-16e-128/moyo": 1,
+    "samsung-s25fe-512/moyo": 1,
+    "samsung-a56-256/moyo": 1,
+    "sony-wh1000xm5/moyo": 1,
+    "jbl-tune-720bt/moyo": 1,
+    "samsung-tv-65u8000/moyo": 1,
+    "playstation-5-slim/moyo": 1,
+    "xiaomi-vacuum-s40/moyo": 1
   }
 }
