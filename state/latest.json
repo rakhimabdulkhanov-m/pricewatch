@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-08-08T13:14:34Z",
+  "checked_at": "2026-08-08T15:48:19Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
         "price": 39599,
-        "in_stock": false,
+        "in_stock": true,
         "name": "Смартфон Samsung Galaxy S25 12/256Gb Navy (SM-S931BDBGEUC)"
       },
       "prom": {
@@ -20,9 +20,9 @@
         "name": "Смартфон Apple iPhone 17 256GB Lavender (MG6M4AF/A)"
       },
       "prom": {
-        "price": 31110,
+        "price": 42225,
         "in_stock": true,
-        "name": "Смартфон Apple iPhone 17e 256GB Black"
+        "name": "Смартфон Apple iPhone 17 256GB Black"
       }
     },
     "iphone-16-128": {
@@ -130,7 +130,7 @@
     },
     "apple-watch-s10-46": {
       "prom": {
-        "price": 24767,
+        "price": 23083,
         "in_stock": true,
         "name": "Смарт-годинник Apple Watch Series 10 GPS 46mm Rose Gold Aluminum Case w."
       }
