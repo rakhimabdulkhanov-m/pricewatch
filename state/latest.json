@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-08T02:24:08Z",
+  "checked_at": "2026-08-08T04:30:16Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -152,7 +152,7 @@
     "macbook-air-m2-256": {
       "prom": {
         "price": 40395,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Ноутбук 13.6&quot; Apple MacBook Air M2 8GB RAM 256Gb SSD IPS Midnight Apple Care (2049)"
       }
     }
