@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-10T08:06:55Z",
+  "checked_at": "2026-08-10T10:38:57Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -81,7 +81,7 @@
       },
       "prom": {
         "price": 11339,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Навушники Sony WH-1000XM5 Wireless Noise Cancelling Headphones (Silver) [68955]"
       }
     },
@@ -138,7 +138,7 @@
     "samsung-watch7-44": {
       "prom": {
         "price": 17354,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Розумний годинник Samsung Galaxy Watch7 44 мм зі спортивним ремінцем, розмір гумового ремінця M/L, дисплей 3,7 см, 1,47."
       }
     },
