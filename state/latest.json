@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-09T21:50:41Z",
+  "checked_at": "2026-08-10T02:37:01Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -144,7 +144,7 @@
     },
     "xiaomi-vacuum-s40": {
       "moyo": {
-        "price": 9999,
+        "price": 9199,
         "in_stock": true,
         "name": "Робот-пилосос Xiaomi S40 White (1163555)"
       }
