@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-08-10T10:38:57Z",
+  "checked_at": "2026-08-10T13:47:12Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
         "price": 39599,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смартфон Samsung Galaxy S25 12/256Gb Navy (SM-S931BDBGEUC)"
       },
       "prom": {
@@ -68,9 +68,9 @@
         "name": "Смартфон Samsung Galaxy A56 5G 8/256Gb Graphite (SM-A566BZKCEUC)"
       },
       "prom": {
-        "price": 19229,
-        "in_stock": true,
-        "name": "Смартфон Samsung Galaxy A56 5G (8+256Gb) Awesome Light Gray"
+        "price": 17599,
+        "in_stock": false,
+        "name": "Смартфон Samsung Galaxy A56 5G 8/256GB Awesome Light Gray"
       }
     },
     "sony-wh1000xm5": {
@@ -81,7 +81,7 @@
       },
       "prom": {
         "price": 11339,
-        "in_stock": false,
+        "in_stock": true,
         "name": "Навушники Sony WH-1000XM5 Wireless Noise Cancelling Headphones (Silver) [68955]"
       }
     },
