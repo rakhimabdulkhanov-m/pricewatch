@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-11T19:24:21Z",
+  "checked_at": "2026-08-11T22:07:21Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -44,7 +44,7 @@
         "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4SX/A)"
       },
       "prom": {
-        "price": 26245,
+        "price": 27301,
         "in_stock": true,
         "name": "Смартфон Apple iPhone 16e 128GB Black"
       }
@@ -99,7 +99,7 @@
         "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       },
       "prom": {
-        "price": 2200,
+        "price": 2206,
         "in_stock": true,
         "name": "Навушники JBL Tune 720BT White JBLT720BTWHT buzyna"
       }
@@ -158,6 +158,6 @@
     }
   },
   "_failures": {
-    "samsung-tv-65u8000/moyo": 10
+    "samsung-tv-65u8000/moyo": 11
   }
 }
