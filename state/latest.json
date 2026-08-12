@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-08-12T16:11:51Z",
+  "checked_at": "2026-08-12T19:29:01Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
         "price": 39599,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смартфон Samsung Galaxy S25 12/256Gb Navy (SM-S931BDBGEUC)"
       },
       "prom": {
@@ -130,9 +130,9 @@
     },
     "apple-watch-s10-46": {
       "prom": {
-        "price": 28278,
+        "price": 18205,
         "in_stock": false,
-        "name": "Смарт-годинник Apple Watch Series 10 GPS 46mm Rose Gold Aluminum Case w."
+        "name": "Смарт-годинник Apple Watch Series 10 GPS 46mm Rose Gold Aluminum Case w. Plum Sport Loop (MWWV3)"
       }
     },
     "samsung-watch7-44": {
