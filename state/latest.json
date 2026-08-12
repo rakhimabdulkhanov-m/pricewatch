@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-12T02:47:21Z",
+  "checked_at": "2026-08-12T05:05:13Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -158,6 +158,6 @@
     }
   },
   "_failures": {
-    "samsung-tv-65u8000/moyo": 12
+    "samsung-tv-65u8000/moyo": 13
   }
 }
