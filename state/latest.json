@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-08-14T19:16:36Z",
+  "checked_at": "2026-08-14T21:43:59Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
         "price": 39599,
-        "in_stock": false,
+        "in_stock": true,
         "name": "Смартфон Samsung Galaxy S25 12/256Gb Navy (SM-S931BDBGEUC)"
       },
       "prom": {
@@ -20,7 +20,7 @@
         "name": "Смартфон Apple iPhone 17 256GB Lavender (MG6M4AF/A)"
       },
       "prom": {
-        "price": 44777,
+        "price": 43078,
         "in_stock": true,
         "name": "Смартфон Apple iPhone 17 256GB Black"
       }
