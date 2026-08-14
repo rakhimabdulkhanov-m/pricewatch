@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-14T10:19:19Z",
+  "checked_at": "2026-08-14T13:46:16Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -20,7 +20,7 @@
         "name": "Смартфон Apple iPhone 17 256GB Lavender (MG6M4AF/A)"
       },
       "prom": {
-        "price": 42831,
+        "price": 44777,
         "in_stock": true,
         "name": "Смартфон Apple iPhone 17 256GB Black"
       }
@@ -28,7 +28,7 @@
     "iphone-16-128": {
       "moyo": {
         "price": 35999,
-        "in_stock": false,
+        "in_stock": true,
         "name": "Смартфон Apple iPhone 16 128GB Black (MYE73SX/A)"
       },
       "prom": {
@@ -68,8 +68,8 @@
         "name": "Смартфон Samsung Galaxy A56 5G 8/256Gb Graphite (SM-A566BZKCEUC)"
       },
       "prom": {
-        "price": 17599,
-        "in_stock": false,
+        "price": 18981,
+        "in_stock": true,
         "name": "Смартфон Samsung Galaxy A56 5G 8/256GB Awesome Light Gray"
       }
     },
@@ -123,7 +123,7 @@
         "name": "Ігрова консоль PlayStation 5 Slim"
       },
       "prom": {
-        "price": 32499,
+        "price": 32849,
         "in_stock": true,
         "name": "Ігрова консоль Sony PlayStation 5 Slim 1TB White (1000040591) [94342]"
       }
