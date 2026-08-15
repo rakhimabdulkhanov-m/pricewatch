@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-15T09:43:53Z",
+  "checked_at": "2026-08-15T13:01:41Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -130,15 +130,15 @@
     },
     "apple-watch-s10-46": {
       "prom": {
-        "price": 9150,
+        "price": 23083,
         "in_stock": true,
-        "name": "Смарт-годинник Apple Watch Series 10 GPS 46mm Rose Gold Aluminum Case w. Plum Sport Loop (MWWV3)"
+        "name": "Смарт-годинник Apple Watch Series 10 GPS 46mm Rose Gold Aluminum Case w."
       }
     },
     "samsung-watch7-44": {
       "prom": {
         "price": 17354,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Розумний годинник Samsung Galaxy Watch7 44 мм зі спортивним ремінцем, розмір гумового ремінця M/L, дисплей 3,7 см, 1,47."
       }
     },
@@ -157,5 +157,7 @@
       }
     }
   },
-  "_failures": {}
+  "_failures": {
+    "jbl-tune-720bt/prom": 1
+  }
 }
