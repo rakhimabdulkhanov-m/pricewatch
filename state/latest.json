@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-17T13:08:18Z",
+  "checked_at": "2026-08-17T15:43:16Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -28,7 +28,7 @@
     "iphone-16-128": {
       "moyo": {
         "price": 35999,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смартфон Apple iPhone 16 128GB Black (MYE73SX/A)"
       },
       "prom": {
@@ -157,5 +157,7 @@
       }
     }
   },
-  "_failures": {}
+  "_failures": {
+    "sony-wh1000xm5/prom": 1
+  }
 }
