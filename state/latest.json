@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-08-17T15:43:16Z",
+  "checked_at": "2026-08-17T19:00:14Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
         "price": 39599,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смартфон Samsung Galaxy S25 12/256Gb Navy (SM-S931BDBGEUC)"
       },
       "prom": {
@@ -158,6 +158,7 @@
     }
   },
   "_failures": {
-    "sony-wh1000xm5/prom": 1
+    "iphone-16e-128/prom": 1,
+    "airpods-pro-2/prom": 1
   }
 }
