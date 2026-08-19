@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-19T01:55:12Z",
+  "checked_at": "2026-08-19T04:03:41Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -58,7 +58,7 @@
       "prom": {
         "price": 37077,
         "in_stock": true,
-        "name": "Мобільний телефон Samsung Galaxy S25 FE 8/512Gb Icyblue (SM-S731BLBIEUC) k"
+        "name": "Мобільний телефон Samsung Galaxy S25 FE 8/512Gb Icyblue (SM-S731BLBIEUC) i"
       }
     },
     "samsung-a56-256": {
@@ -157,5 +157,17 @@
       }
     }
   },
-  "_failures": {}
+  "_failures": {
+    "samsung-s25-256/moyo": 1,
+    "iphone-17-256/moyo": 1,
+    "iphone-16-128/moyo": 1,
+    "iphone-16e-128/moyo": 1,
+    "samsung-s25fe-512/moyo": 1,
+    "samsung-a56-256/moyo": 1,
+    "sony-wh1000xm5/moyo": 1,
+    "jbl-tune-720bt/moyo": 1,
+    "samsung-tv-65u8000/moyo": 1,
+    "playstation-5-slim/moyo": 1,
+    "xiaomi-vacuum-s40/moyo": 1
+  }
 }
