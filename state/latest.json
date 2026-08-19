@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-19T13:11:20Z",
+  "checked_at": "2026-08-19T15:48:53Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -158,6 +158,6 @@
     }
   },
   "_failures": {
-    "iphone-16e-128/prom": 1
+    "macbook-air-m2-256/prom": 1
   }
 }
