@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-20T13:16:30Z",
+  "checked_at": "2026-08-20T15:51:36Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -44,9 +44,9 @@
         "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4SX/A)"
       },
       "prom": {
-        "price": 29050,
+        "price": 27656,
         "in_stock": true,
-        "name": "Мобільний телефон Apple iPhone 16e 128GB Black (MD1Q4) c"
+        "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4)"
       }
     },
     "samsung-s25fe-512": {
@@ -56,9 +56,9 @@
         "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512Gb Navy (SM-S731BDBIEUC)"
       },
       "prom": {
-        "price": 40515,
+        "price": 37400,
         "in_stock": true,
-        "name": "Мобільний телефон Samsung Galaxy S25 FE 8/512Gb Icyblue (SM-S731BLBIEUC) n"
+        "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512GB Icyblue (SM-S731BLBIEUC)"
       }
     },
     "samsung-a56-256": {
@@ -137,7 +137,7 @@
     },
     "samsung-watch7-44": {
       "prom": {
-        "price": 19089,
+        "price": 22071,
         "in_stock": true,
         "name": "Розумний годинник Samsung Galaxy Watch7 44 мм зі спортивним ремінцем, розмір гумового ремінця M/L, дисплей 3,7 см, 1,47."
       }
@@ -157,17 +157,5 @@
       }
     }
   },
-  "_failures": {
-    "samsung-s25-256/moyo": 1,
-    "iphone-17-256/moyo": 1,
-    "iphone-16-128/moyo": 1,
-    "iphone-16e-128/moyo": 1,
-    "samsung-s25fe-512/moyo": 1,
-    "samsung-a56-256/moyo": 1,
-    "sony-wh1000xm5/moyo": 1,
-    "jbl-tune-720bt/moyo": 1,
-    "samsung-tv-65u8000/moyo": 1,
-    "playstation-5-slim/moyo": 1,
-    "xiaomi-vacuum-s40/moyo": 1
-  }
+  "_failures": {}
 }
