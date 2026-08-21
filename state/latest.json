@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-21T02:00:22Z",
+  "checked_at": "2026-08-21T04:03:57Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -44,9 +44,9 @@
         "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4SX/A)"
       },
       "prom": {
-        "price": 27656,
-        "in_stock": false,
-        "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4)"
+        "price": 27632,
+        "in_stock": true,
+        "name": "Мобільний телефон Apple iPhone 16e 128 GB Black (MD1Q4)"
       }
     },
     "samsung-s25fe-512": {
@@ -58,7 +58,7 @@
       "prom": {
         "price": 40515,
         "in_stock": true,
-        "name": "Мобільний телефон Samsung Galaxy S25 FE 8/512Gb Icyblue (SM-S731BLBIEUC) n"
+        "name": "Мобільний телефон Samsung Galaxy S25 FE 8/512Gb Icyblue (SM-S731BLBIEUC) i"
       }
     },
     "samsung-a56-256": {
