@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-21T18:58:47Z",
+  "checked_at": "2026-08-21T21:41:35Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -44,9 +44,9 @@
         "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4SX/A)"
       },
       "prom": {
-        "price": 27632,
+        "price": 27089,
         "in_stock": true,
-        "name": "Мобільний телефон Apple iPhone 16e 128 GB Black (MD1Q4)"
+        "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4) [128501]"
       }
     },
     "samsung-s25fe-512": {
@@ -137,7 +137,7 @@
     },
     "samsung-watch7-44": {
       "prom": {
-        "price": 21112,
+        "price": 22071,
         "in_stock": true,
         "name": "Розумний годинник Samsung Galaxy Watch7 44 мм зі спортивним ремінцем, розмір гумового ремінця M/L, дисплей 3,7 см, 1,47."
       }
