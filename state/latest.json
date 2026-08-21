@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-21T07:10:35Z",
+  "checked_at": "2026-08-21T09:55:04Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -32,9 +32,9 @@
         "name": "Смартфон Apple iPhone 16 128GB Black (MYE73SX/A)"
       },
       "prom": {
-        "price": 41200,
+        "price": 34999,
         "in_stock": true,
-        "name": "Мобільний телефон Apple iPhone 16 128GB Black MYE73 dutyfree"
+        "name": "Смартфон Apple iPhone 16 128Gb Black (MYE73)"
       }
     },
     "iphone-16e-128": {
@@ -157,5 +157,7 @@
       }
     }
   },
-  "_failures": {}
+  "_failures": {
+    "macbook-air-m2-256/prom": 1
+  }
 }
