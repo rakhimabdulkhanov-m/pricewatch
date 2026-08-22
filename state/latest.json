@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-22T18:51:50Z",
+  "checked_at": "2026-08-22T21:37:55Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -137,8 +137,8 @@
     },
     "samsung-watch7-44": {
       "prom": {
-        "price": 20967,
-        "in_stock": true,
+        "price": 21112,
+        "in_stock": false,
         "name": "Розумний годинник Samsung Galaxy Watch7 44 мм зі спортивним ремінцем, розмір гумового ремінця M/L, дисплей 3,7 см, 1,47."
       }
     },
