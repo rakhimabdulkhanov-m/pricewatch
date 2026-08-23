@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-22T21:37:55Z",
+  "checked_at": "2026-08-23T02:02:26Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -20,9 +20,9 @@
         "name": "Смартфон Apple iPhone 17 256GB Lavender (MG6M4AF/A)"
       },
       "prom": {
-        "price": 43823,
+        "price": 43912,
         "in_stock": true,
-        "name": "Смартфон Apple iPhone 17 256GB eSim Black"
+        "name": "Смартфон Apple iPhone 17 256GB Black"
       }
     },
     "iphone-16-128": {
@@ -32,9 +32,9 @@
         "name": "Смартфон Apple iPhone 16 128GB Black (MYE73SX/A)"
       },
       "prom": {
-        "price": 41200,
+        "price": 34999,
         "in_stock": true,
-        "name": "Мобільний телефон Apple iPhone 16 128GB Black MYE73 dutyfree"
+        "name": "Смартфон Apple iPhone 16 128Gb Black (MYE73)"
       }
     },
     "iphone-16e-128": {
