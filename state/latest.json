@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-24T10:09:57Z",
+  "checked_at": "2026-08-24T13:15:57Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -44,9 +44,9 @@
         "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4SX/A)"
       },
       "prom": {
-        "price": 27089,
+        "price": 27245,
         "in_stock": true,
-        "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4) [128501]"
+        "name": "Смартфон Apple iPhone 16e 128GB Black"
       }
     },
     "samsung-s25fe-512": {
@@ -123,7 +123,7 @@
         "name": "Ігрова консоль PlayStation 5 Slim"
       },
       "prom": {
-        "price": 33189,
+        "price": 33389,
         "in_stock": true,
         "name": "Ігрова консоль Sony PlayStation 5 Slim 1TB White (1000040591) [94342]"
       }
@@ -137,7 +137,7 @@
     },
     "samsung-watch7-44": {
       "prom": {
-        "price": 21112,
+        "price": 20967,
         "in_stock": true,
         "name": "Розумний годинник Samsung Galaxy Watch7 44 мм зі спортивним ремінцем, розмір гумового ремінця M/L, дисплей 3,7 см, 1,47."
       }
@@ -157,17 +157,5 @@
       }
     }
   },
-  "_failures": {
-    "samsung-s25-256/moyo": 1,
-    "iphone-17-256/moyo": 1,
-    "iphone-16-128/moyo": 1,
-    "iphone-16e-128/moyo": 1,
-    "samsung-s25fe-512/moyo": 1,
-    "samsung-a56-256/moyo": 1,
-    "sony-wh1000xm5/moyo": 1,
-    "jbl-tune-720bt/moyo": 1,
-    "samsung-tv-65u8000/moyo": 1,
-    "playstation-5-slim/moyo": 1,
-    "xiaomi-vacuum-s40/moyo": 1
-  }
+  "_failures": {}
 }
