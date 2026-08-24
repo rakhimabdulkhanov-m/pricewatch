@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-24T13:15:57Z",
+  "checked_at": "2026-08-24T15:59:10Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -20,9 +20,9 @@
         "name": "Смартфон Apple iPhone 17 256GB Lavender (MG6M4AF/A)"
       },
       "prom": {
-        "price": 43912,
+        "price": 39000,
         "in_stock": true,
-        "name": "Смартфон Apple iPhone 17 256GB Black"
+        "name": "Смартфон Apple iPhone 17 256 GB Black Nano-SIM"
       }
     },
     "iphone-16-128": {
@@ -56,9 +56,9 @@
         "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512Gb Navy (SM-S731BDBIEUC)"
       },
       "prom": {
-        "price": 33430,
+        "price": 39999,
         "in_stock": true,
-        "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512Gb Icyblue (SM-S731BLBI)"
+        "name": "Смартфон Samsung S25 FE 5G (Galaxy S731B) 8/512Gb Navy"
       }
     },
     "samsung-a56-256": {
@@ -99,9 +99,9 @@
         "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       },
       "prom": {
-        "price": 2100,
+        "price": 1849,
         "in_stock": true,
-        "name": "JBL Tune 720BT White (JBLT720BTWHT)"
+        "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       }
     },
     "samsung-tv-65u8000": {
