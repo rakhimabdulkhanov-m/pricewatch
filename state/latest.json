@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-26T04:05:52Z",
+  "checked_at": "2026-08-26T07:11:43Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -157,5 +157,7 @@
       }
     }
   },
-  "_failures": {}
+  "_failures": {
+    "samsung-watch7-44/prom": 1
+  }
 }
