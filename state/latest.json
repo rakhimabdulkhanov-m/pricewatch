@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-26T16:36:20Z",
+  "checked_at": "2026-08-26T20:05:43Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -44,7 +44,7 @@
         "name": "Смартфон Apple iPhone 16e 128GB Black (MD1Q4SX/A)"
       },
       "prom": {
-        "price": 26709,
+        "price": 26829,
         "in_stock": true,
         "name": "Мобільний телефон Apple iPhone 16e 128GB Black (MD1Q4)"
       }
@@ -157,5 +157,9 @@
       }
     }
   },
-  "_failures": {}
+  "_failures": {
+    "iphone-17-256/prom": 1,
+    "iphone-16-128/prom": 1,
+    "macbook-air-m2-256/prom": 1
+  }
 }
