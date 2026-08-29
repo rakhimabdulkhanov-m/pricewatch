@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-28T15:26:20Z",
+  "checked_at": "2026-08-29T01:47:30Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -8,7 +8,7 @@
         "name": "Смартфон Samsung Galaxy S25 12/256Gb Navy (SM-S931BDBGEUC)"
       },
       "prom": {
-        "price": 30055,
+        "price": 43999,
         "in_stock": false,
         "name": "Смартфон Samsung Galaxy S25 12/256GB Blueblack (SM-S931BZKG)"
       }
@@ -28,7 +28,7 @@
     "iphone-16-128": {
       "moyo": {
         "price": 35999,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Смартфон Apple iPhone 16 128GB Black (MYE73SX/A)"
       },
       "prom": {
@@ -157,8 +157,5 @@
       }
     }
   },
-  "_failures": {
-    "samsung-a56-256/prom": 1,
-    "macbook-air-m2-256/prom": 1
-  }
+  "_failures": {}
 }
