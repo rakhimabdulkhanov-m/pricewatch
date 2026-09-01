@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-01T14:11:21Z",
+  "checked_at": "2026-09-01T18:33:53Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -32,9 +32,9 @@
         "name": "Смартфон Apple iPhone 16 128GB Black (MYE73SX/A)"
       },
       "prom": {
-        "price": 34999,
+        "price": 31280,
         "in_stock": true,
-        "name": "Смартфон Apple iPhone 16 128Gb Black (MYE73)"
+        "name": "Смартфон Apple iPhone 16 128GB Black Open Box"
       }
     },
     "iphone-16e-128": {
@@ -56,9 +56,9 @@
         "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512Gb Navy (SM-S731BDBIEUC)"
       },
       "prom": {
-        "price": 38500,
+        "price": 39999,
         "in_stock": true,
-        "name": "Смартфон Samsung Galaxy S25 FE 5G 8/512GB Icyblue (SM-S731BLBIEUC)"
+        "name": "Смартфон Samsung S25 FE 5G (Galaxy S731B) 8/512Gb Navy"
       }
     },
     "samsung-a56-256": {
