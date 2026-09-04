@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-04T04:37:26Z",
+  "checked_at": "2026-09-04T11:24:18Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -20,9 +20,9 @@
         "name": "Смартфон Apple iPhone 17 256GB Lavender (MG6M4AF/A)"
       },
       "prom": {
-        "price": 43676,
+        "price": 44099,
         "in_stock": true,
-        "name": "Смартфон Apple iPhone 17 256GB eSim Black"
+        "name": "Смартфон Apple iPhone 17 256GB Black"
       }
     },
     "iphone-16-128": {
@@ -32,9 +32,9 @@
         "name": "Смартфон Apple iPhone 16 128GB Black (MYE73SX/A)"
       },
       "prom": {
-        "price": 34999,
+        "price": 35855,
         "in_stock": true,
-        "name": "Смартфон Apple iPhone 16 128Gb Black (MYE73)"
+        "name": "Смартфон Apple iPhone 16 128GB Black"
       }
     },
     "iphone-16e-128": {
@@ -158,7 +158,16 @@
     }
   },
   "_failures": {
-    "xiaomi-vacuum-s40/moyo": 9,
-    "samsung-a56-256/moyo": 5
+    "xiaomi-vacuum-s40/moyo": 10,
+    "samsung-a56-256/moyo": 6,
+    "samsung-s25-256/moyo": 1,
+    "iphone-17-256/moyo": 1,
+    "iphone-16-128/moyo": 1,
+    "iphone-16e-128/moyo": 1,
+    "samsung-s25fe-512/moyo": 1,
+    "sony-wh1000xm5/moyo": 1,
+    "jbl-tune-720bt/moyo": 1,
+    "samsung-tv-65u8000/moyo": 1,
+    "playstation-5-slim/moyo": 1
   }
 }
