@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-04T20:48:28Z",
+  "checked_at": "2026-09-04T23:05:25Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -158,7 +158,7 @@
     }
   },
   "_failures": {
-    "xiaomi-vacuum-s40/moyo": 12,
-    "samsung-a56-256/moyo": 8
+    "xiaomi-vacuum-s40/moyo": 13,
+    "samsung-a56-256/moyo": 9
   }
 }
