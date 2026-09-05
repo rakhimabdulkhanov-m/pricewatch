@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-04T23:05:25Z",
+  "checked_at": "2026-09-05T04:33:36Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -99,9 +99,9 @@
         "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       },
       "prom": {
-        "price": 2100,
+        "price": 2199,
         "in_stock": true,
-        "name": "JBL Tune 720BT White (JBLT720BTWHT)"
+        "name": "Навушники JBL Tune 720BT White (JBLT720BTWHT)"
       }
     },
     "samsung-tv-65u8000": {
@@ -158,7 +158,7 @@
     }
   },
   "_failures": {
-    "xiaomi-vacuum-s40/moyo": 13,
-    "samsung-a56-256/moyo": 9
+    "xiaomi-vacuum-s40/moyo": 14,
+    "samsung-a56-256/moyo": 10
   }
 }
