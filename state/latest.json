@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-05T04:33:36Z",
+  "checked_at": "2026-09-05T10:39:03Z",
   "items": {
     "samsung-s25-256": {
       "moyo": {
@@ -138,7 +138,7 @@
     "samsung-watch7-44": {
       "prom": {
         "price": 22071,
-        "in_stock": true,
+        "in_stock": false,
         "name": "Розумний годинник Samsung Galaxy Watch7 44 мм зі спортивним ремінцем, розмір гумового ремінця M/L, дисплей 3,7 см, 1,47."
       }
     },
@@ -158,7 +158,8 @@
     }
   },
   "_failures": {
-    "xiaomi-vacuum-s40/moyo": 14,
-    "samsung-a56-256/moyo": 10
+    "xiaomi-vacuum-s40/moyo": 15,
+    "samsung-a56-256/moyo": 11,
+    "iphone-16-128/prom": 1
   }
 }
